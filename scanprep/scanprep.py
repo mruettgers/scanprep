@@ -59,14 +59,14 @@ def get_new_docs_pages(doc, separate=True, remove_blank=True):
 
 def emit_new_documents(doc, filename, out_dir, separate=True, remove_blank=True):
     pathlib.Path(out_dir).mkdir(parents=True, exist_ok=True)
-
+    (basename, ext) = os.path.splitext(filename)
     new_docs = get_new_docs_pages(doc, separate, remove_blank)
     for i, pages in enumerate(new_docs):
         new_doc = fitz.open()  # Will create a new, blank document.
         for j, page_no in enumerate(pages):
             new_doc.insert_pdf(doc, from_page=page_no,
                               to_page=page_no, final=(j == len(pages) - 1))
-        new_doc.save(os.path.join(out_dir, f"{i}-{filename}"))
+        new_doc.save(os.path.join(out_dir, f"{basename}-{i+1:03d}{ext}"))
 
 
 # Taken from: https://stackoverflow.com/a/9236426

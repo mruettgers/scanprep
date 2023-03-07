@@ -47,7 +47,7 @@ python3 scanprep/scanprep.py -h
 ## Usage
 
 Most simply, you can run scanprep via `scanprep <filename.pdf>`. This will process the input file and output the results into your current working directory. To specify a different output directory, use `scanprep <filename.pdf> <output_directory>`.  
-The output files will be called `0-<filename.pdf>`, `1-<filename.pdf>`, and so on.
+The output files will be called `<basename>-001.pdf`, `<basename>-002.pdf`, and so on.
 
 By default, both page separation and blank page removal will be performed. To turn them off, use `--no-page-separation` or `--no-blank-removal`, respectively.
 
